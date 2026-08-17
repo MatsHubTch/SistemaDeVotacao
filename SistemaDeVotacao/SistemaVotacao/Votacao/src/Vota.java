@@ -7,7 +7,8 @@ class Vota {
     public static void main(String[] args) {
 
         Scanner teclado = new Scanner(System.in);
-        int escolha;
+        int escolha = 0;
+        int quantia;
 
         System.out.println("================================");
         System.out.println("       SISTEMA DE VOTAÇÃO       ");
@@ -21,7 +22,15 @@ class Vota {
 
         escolha = teclado.nextInt();
 
-        
+        if (escolha == 1) {
+        do {
+            System.out.println("Quantos candidatos deseja cadastrar?");
+            quantia = teclado.nextInt();
+        }while (quantia >= 6 );
+
+
+
+        }
 
         teclado.close();
     }
