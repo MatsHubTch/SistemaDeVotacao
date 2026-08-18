@@ -25,31 +25,52 @@ class Vota {
             System.out.println("3 - Exibir resultado");
             System.out.println("4 - Exibir matrix de votos");
             System.out.println("5 - Encerrar sistema");
-
+            System.out.print("\n");
+            System.out.println("Selecione uma opção: ");
+            System.out.print("\n");
             escolha = teclado.nextInt();
-        } while (quantia > 5);
+            System.out.print("\n");
+
 
 //------------------------------------------------------------------------------------------
 
-        if (escolha == 1) {
+            if (escolha == 1) {
 
-
-            do {
 
                 System.out.println("Quantos candidatos deseja cadastrar?");
+                System.out.print("\n");
                 quantia = teclado.nextInt();
                 teclado.nextLine();
+                System.out.print("\n");
+
                 candidatos = new String[quantia];
                 for (int i = 0; i < quantia; i++) {
-                    System.out.print("Qual o nome do candidato " + (i + 1) + "? ");
+                    System.out.println("Qual o nome do candidato " + (i + 1) + "? ");
+                    System.out.print("\n");
                     candidatos[i] = teclado.nextLine();
+                    System.out.print("\n");
+                }
+                System.out.println("\nCandidatos cadastrados:");
+                System.out.print("\n");
+                for (int i = 0; i < quantia; i++) {
+                    System.out.println(("Candidato " + (i + 1) + ":" + "\n") + ("Numero" + ": " + (i + 1) + "\n") + "Nome: " + candidatos[i] + "\n");
                 }
 
-            } while (quantia >= 6);
+                System.out.print("\n");
+                System.out.println("Cadastro concluído com sucesso!");
+                System.out.print("\n");
+
+                System.out.println("Digite 0 para voltar ao menu e continuar a votação: ");
+                System.out.print("\n");
+                escolha = teclado.nextInt();
+                System.out.print("\n");
+
+            }
+        }while (quantia != 5) ;
 
 //------------------------------------------------------------------------------------------
 
-        }
+
 
         teclado.close();
     }
