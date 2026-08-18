@@ -20,10 +20,10 @@ class Vota {
             System.out.println("       SISTEMA DE VOTAÇÃO       ");
             System.out.println("================================");
             System.out.println("\n");
-            System.out.println("1 - Cadastro candidatos");
+            System.out.println("1 - Cadastro de candidatos");
             System.out.println("2 - Iniciar votação");
             System.out.println("3 - Exibir resultado");
-            System.out.println("4 - Exibir matrix de votos");
+            System.out.println("4 - Exibir matriz de votos");
             System.out.println("5 - Encerrar sistema");
             System.out.print("\n");
             System.out.println("Selecione uma opção: ");
@@ -60,13 +60,37 @@ class Vota {
                 System.out.println("Cadastro concluído com sucesso!");
                 System.out.print("\n");
 
-                System.out.println("Digite 0 para voltar ao menu e continuar a votação: ");
+                System.out.println("Digite 0 para voltar ao menu e iniciar a votação: ");
                 System.out.print("\n");
                 escolha = teclado.nextInt();
                 System.out.print("\n");
 
             }
-        }while (quantia != 5) ;
+            if (escolha == 2) {
+                System.out.println("================================");
+                System.out.println("       INÍCIO DA VOTAÇÂO        ");
+                System.out.println("================================");
+                System.out.println("\n");
+                System.out.println("Candidatos cadastrados até agora:");
+                for (int i = 0; i < quantia; i++) {
+                    System.out.println((i + 1) + " - " + candidatos[i]);
+
+                }
+                System.out.print("\n");
+                System.out.println("Digite 0 para encerrar a votação e 1 para continuar: ");
+                System.out.print("\n");
+                escolha = teclado.nextInt();
+                System.out.print("\n");
+                if (escolha == 1) {
+
+                }
+                if (quantia == 0){
+                    System.out.println("Nenhum candidato foi cadastrado até agora.");
+                }
+                System.out.print("\n");
+
+            }
+        }while (escolha != 5) ;
 
 //------------------------------------------------------------------------------------------
 
