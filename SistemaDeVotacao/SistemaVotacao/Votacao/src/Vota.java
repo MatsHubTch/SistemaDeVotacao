@@ -11,7 +11,7 @@ class Vota {
         int escolha = 0;
         int quantia = 0;
         String[] candidatos = null;
-
+        int ;
 
 //------------------------------------------------------------------------------------------
 
@@ -82,20 +82,32 @@ class Vota {
                 escolha = teclado.nextInt();
                 System.out.print("\n");
                 if (escolha == 1) {
+                    do {
+                    System.out.println("Digite o número do candidato.");
+                    quantia = teclado.nextInt();
+
+                        if (quantia > 5) {
+                            System.out.println("Erro! \nCandidato inexistente.");
+                        }
+                    } while (quantia > 5);
+                    if (quantia == quantia) {
+                        System.out.println("Voto registrado com sucesso.");
+
+
+                    }
+                    if (quantia == 0) {
+                        System.out.println("Nenhum candidato foi cadastrado até agora.");
+                    }
+                    System.out.print("\n");
 
                 }
-                if (quantia == 0){
-                    System.out.println("Nenhum candidato foi cadastrado até agora.");
-                }
-                System.out.print("\n");
-
             }
         }while (escolha != 5) ;
 
 //------------------------------------------------------------------------------------------
 
 
-
-        teclado.close();
+            teclado.close();
+        }
     }
-}
+
