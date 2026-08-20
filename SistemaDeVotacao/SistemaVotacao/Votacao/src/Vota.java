@@ -98,23 +98,25 @@ class Vota {
                 escolha = teclado.nextInt();
                 System.out.print("\n");
                 if (escolha == 1) {
-                    System.out.println("Digite o número do candidato.");
-                    voto = teclado.nextInt();
-
-                    while (voto < 1 || voto > quantidadeCandidatos) {
-                        System.out.println("Erro! Candidato inexistente.");
+                    for (int i = 0 ; i < quantia; i++) {
+                        System.out.println("Digite o número do candidato.");
                         voto = teclado.nextInt();
+
+                        while (voto < 1 || voto > quantidadeCandidatos) {
+                            System.out.println("Erro! Candidato inexistente.");
+                            voto = teclado.nextInt();
+
+                        }
+
+                        if (voto == 1) votos1 = random.nextInt(votosDisponiveís);
+                        if (voto == 2) votos2 = random.nextInt(votosDisponiveís);
+                        if (voto == 3) votos3 = random.nextInt(votosDisponiveís);
+                        if (voto == 4) votos4 = random.nextInt(votosDisponiveís);
+                        if (voto == 5) votos5 = random.nextInt(votosDisponiveís);
+
+                        totalVotos = votos1 + votos2 + votos3 + votos4 + votos5;
+                        System.out.println("Voto registrado com sucesso.");
                     }
-
-                    if (voto == 1) votos1 = random.nextInt(votosDisponiveís);
-                    if (voto == 2)  votos2 = random.nextInt(votosDisponiveís);
-                    if (voto == 3)  votos3 = random.nextInt(votosDisponiveís) ;
-                    if (voto == 4)  votos4 = random.nextInt(votosDisponiveís) ;
-                    if (voto == 5)  votos5 = random.nextInt(votosDisponiveís);
-
-                    totalVotos++;
-                    System.out.println("Voto registrado com sucesso.");
-
                 }
             }
 
@@ -133,11 +135,17 @@ class Vota {
                 System.out.println("================================");
                 System.out.println("       RESULTADO DA VOTAÇÃO     "); //exibe o resultado se n tiver empate
                 System.out.println("================================");
-                System.out.println(candidatos[0] + " -> " + votos1 + " votos");
-                if (quantidadeCandidatos >= 2) System.out.println(candidatos[1] + " -> " + votos2 + " votos");
-                if (quantidadeCandidatos >= 3) System.out.println(candidatos[2] + " -> " + votos3 + " votos");
-                if (quantidadeCandidatos >= 4) System.out.println(candidatos[3] + " -> " + votos4 + " votos");
-                if (quantidadeCandidatos >= 5) System.out.println(candidatos[4] + " -> " + votos5 + " votos");
+                double percentual1 = (double) votos1 / totalVotos * 100;
+                double percentual2 = (double) votos2 / totalVotos * 100;
+                double percentual3 = (double) votos3 / totalVotos * 100;
+                double percentual4 = (double) votos4 / totalVotos * 100;
+                double percentual5 = (double) votos5 / totalVotos * 100;
+
+                System.out.println(candidatos[0] + " -> " + votos1 + " votos" + "\n" + "percentual de votos: " + percentual1);
+                if (quantidadeCandidatos >= 2) System.out.println(candidatos[1] + " -> " + votos2 + " votos" + "\n" + percentual2);
+                if (quantidadeCandidatos >= 3) System.out.println(candidatos[2] + " -> " + votos3 + " votos" + "\n" + percentual3);
+                if (quantidadeCandidatos >= 4) System.out.println(candidatos[3] + " -> " + votos4 + " votos" + "\n" + percentual4);
+                if (quantidadeCandidatos >= 5) System.out.println(candidatos[4] + " -> " + votos5 + " votos" + "\n" + percentual5);
                 System.out.println("Total de votos: " + totalVotos);
 
 //------------------------------------------------------------------------------------------
@@ -155,11 +163,11 @@ class Vota {
                     System.out.println("       RESULTADO COM EMPATE     ");
                     System.out.println("================================");
                     System.out.println("RESULTADO DA VOTAÇÃO");
-                    System.out.println("\n" + candidatos[0] + " -> " + votos1 + " votos");
-                    if (quantidadeCandidatos >= 2) System.out.println(candidatos[1] + " -> " + votos2 + " votos");
-                    if (quantidadeCandidatos >= 3) System.out.println(candidatos[2] + " -> " + votos3 + " votos");
-                    if (quantidadeCandidatos >= 4) System.out.println(candidatos[3] + " -> " + votos4 + " votos");
-                    if (quantidadeCandidatos >= 5) System.out.println(candidatos[4] + " -> " + votos5 + " votos");
+                    System.out.println("\n" + candidatos[0] + " -> " + votos1 + " votos" + "\n" + percentual1);
+                    if (quantidadeCandidatos >= 2) System.out.println(candidatos[1] + " -> " + votos2 + " votos" + "\n" + percentual2);
+                    if (quantidadeCandidatos >= 3) System.out.println(candidatos[2] + " -> " + votos3 + " votos" + "\n" + percentual3);
+                    if (quantidadeCandidatos >= 4) System.out.println(candidatos[3] + " -> " + votos4 + " votos" + "\n" + percentual4);
+                    if (quantidadeCandidatos >= 5) System.out.println(candidatos[4] + " -> " + votos5 + " votos" + "\n" + percentual5);
                     System.out.println("\nTotal de votos: " + totalVotos);
                     System.out.println("\nEMPATE ENTRE:");
 
