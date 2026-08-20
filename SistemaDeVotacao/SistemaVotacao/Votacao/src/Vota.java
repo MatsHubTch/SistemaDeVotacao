@@ -10,6 +10,8 @@ class Vota {
 
         int escolha = 0;
         int quantia = 0;
+        Random random = new Random();
+        int votosDisponiveís = 10;
         int quantidadeCandidatos = 0;
         int voto;
         int totalVotos = 0;
@@ -23,6 +25,7 @@ class Vota {
 //------------------------------------------------------------------------------------------
 
         do {
+
             System.out.println("================================");
             System.out.println("       SISTEMA DE VOTAÇÃO       ");
             System.out.println("================================");
@@ -70,14 +73,21 @@ class Vota {
                 System.out.print("\n");
 
 
-
             }
             if (escolha == 2) {
+
                 System.out.println("================================");
                 System.out.println("       INÍCIO DA VOTAÇÂO        ");
                 System.out.println("================================");
                 System.out.println("\n");
                 System.out.println("Candidatos cadastrados até agora:");
+                if (quantia == 0) {
+                    System.out.println("Nenhum candidato foi cadastrado até agora.");
+                    break;
+                }
+
+
+
                 for (int i = 0; i < quantia; i++) {
                     System.out.println((i + 1) + " - " + candidatos[i]);
 
@@ -96,17 +106,18 @@ class Vota {
                         voto = teclado.nextInt();
                     }
 
-                    if (voto == 1) votos1++;
-                    if (voto == 2) votos2++;
-                    if (voto == 3) votos3++;
-                    if (voto == 4) votos4++;
-                    if (voto == 5) votos5++;
+                    if (voto == 1) votos1 = random.nextInt(votosDisponiveís);
+                    if (voto == 2)  votos2 = random.nextInt(votosDisponiveís);
+                    if (voto == 3)  votos3 = random.nextInt(votosDisponiveís) ;
+                    if (voto == 4)  votos4 = random.nextInt(votosDisponiveís) ;
+                    if (voto == 5)  votos5 = random.nextInt(votosDisponiveís);
 
                     totalVotos++;
                     System.out.println("Voto registrado com sucesso.");
-                }
 
+                }
             }
+
 
 //------------------------------------------------------------------------------------------
 
