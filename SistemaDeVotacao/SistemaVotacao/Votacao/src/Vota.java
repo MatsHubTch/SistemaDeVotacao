@@ -10,8 +10,15 @@ class Vota {
 
         int escolha = 0;
         int quantia = 0;
+        int quantidadeCandidatos = 0;
+        int voto;
+        int totalVotos = 0;
+        int votos1 = 0;
+        int votos2 = 0;
+        int votos3 = 0;
+        int votos4 = 0;
+        int votos5 = 0;
         String[] candidatos = null;
-        int ;
 
 //------------------------------------------------------------------------------------------
 
@@ -40,7 +47,9 @@ class Vota {
                 System.out.println("Quantos candidatos deseja cadastrar?");
                 System.out.print("\n");
                 quantia = teclado.nextInt();
+                quantidadeCandidatos = quantia;
                 teclado.nextLine();
+
                 System.out.print("\n");
 
                 candidatos = new String[quantia];
@@ -60,10 +69,7 @@ class Vota {
                 System.out.println("Cadastro concluído com sucesso!");
                 System.out.print("\n");
 
-                System.out.println("Digite 0 para voltar ao menu e iniciar a votação: ");
-                System.out.print("\n");
-                escolha = teclado.nextInt();
-                System.out.print("\n");
+
 
             }
             if (escolha == 2) {
@@ -82,32 +88,88 @@ class Vota {
                 escolha = teclado.nextInt();
                 System.out.print("\n");
                 if (escolha == 1) {
-                    do {
                     System.out.println("Digite o número do candidato.");
-                    quantia = teclado.nextInt();
+                    voto = teclado.nextInt();
 
-                        if (quantia > 5) {
-                            System.out.println("Erro! \nCandidato inexistente.");
-                        }
-                    } while (quantia > 5);
-                    if (quantia == quantia) {
-                        System.out.println("Voto registrado com sucesso.");
-
-
+                    while (voto < 1 || voto > quantidadeCandidatos) {
+                        System.out.println("Erro! Candidato inexistente.");
+                        voto = teclado.nextInt();
                     }
-                    if (quantia == 0) {
-                        System.out.println("Nenhum candidato foi cadastrado até agora.");
-                    }
-                    System.out.print("\n");
 
+                    if (voto == 1) votos1++;
+                    if (voto == 2) votos2++;
+                    if (voto == 3) votos3++;
+                    if (voto == 4) votos4++;
+                    if (voto == 5) votos5++;
+
+                    totalVotos++;
+                    System.out.println("Voto registrado com sucesso.");
                 }
+
             }
-        }while (escolha != 5) ;
 
 //------------------------------------------------------------------------------------------
 
+            if (escolha == 3) {
+                int maiorNumeroDeVotos = votos1;
 
-            teclado.close();
-        }
+                if (votos2 > maiorNumeroDeVotos) maiorNumeroDeVotos = votos2;
+                if (votos3 > maiorNumeroDeVotos) maiorNumeroDeVotos = votos3;
+                if (votos4 > maiorNumeroDeVotos) maiorNumeroDeVotos = votos4; //ver quem ganhou
+                if (votos5 > maiorNumeroDeVotos) maiorNumeroDeVotos = votos5;
+
+
+                System.out.println("================================");
+                System.out.println("       RESULTADO DA VOTAÇÃO     "); //exibe o resultado se n tiver empate
+                System.out.println("================================");
+                System.out.println(candidatos[0] + " -> " + votos1 + " votos");
+                if (quantidadeCandidatos >= 2) System.out.println(candidatos[1] + " -> " + votos2 + " votos");
+                if (quantidadeCandidatos >= 3) System.out.println(candidatos[2] + " -> " + votos3 + " votos");
+                if (quantidadeCandidatos >= 4) System.out.println(candidatos[3] + " -> " + votos4 + " votos");
+                if (quantidadeCandidatos >= 5) System.out.println(candidatos[4] + " -> " + votos5 + " votos");
+                System.out.println("Total de votos: " + totalVotos);
+
+//------------------------------------------------------------------------------------------
+
+                int quantidadeEmpates = 0;
+                if (votos1 == maiorNumeroDeVotos) quantidadeEmpates++;
+                if (votos2 == maiorNumeroDeVotos && quantidadeCandidatos >= 2) quantidadeEmpates++;
+                if (votos3 == maiorNumeroDeVotos && quantidadeCandidatos >= 3) quantidadeEmpates++; //defin se foi empate
+                if (votos4 == maiorNumeroDeVotos && quantidadeCandidatos >= 4) quantidadeEmpates++;
+                if (votos5 == maiorNumeroDeVotos && quantidadeCandidatos >= 5) quantidadeEmpates++;
+
+
+                if (quantidadeEmpates > 1) {
+                    System.out.println("\n================================");
+                    System.out.println("       RESULTADO COM EMPATE     ");
+                    System.out.println("================================");
+                    System.out.println("RESULTADO DA VOTAÇÃO");
+                    System.out.println("\n" + candidatos[0] + " -> " + votos1 + " votos");
+                    if (quantidadeCandidatos >= 2) System.out.println(candidatos[1] + " -> " + votos2 + " votos");
+                    if (quantidadeCandidatos >= 3) System.out.println(candidatos[2] + " -> " + votos3 + " votos");
+                    if (quantidadeCandidatos >= 4) System.out.println(candidatos[3] + " -> " + votos4 + " votos");
+                    if (quantidadeCandidatos >= 5) System.out.println(candidatos[4] + " -> " + votos5 + " votos");
+                    System.out.println("\nTotal de votos: " + totalVotos);
+                    System.out.println("\nEMPATE ENTRE:");
+
+                    if (votos1 == maiorNumeroDeVotos) System.out.println("- " + candidatos[0]);
+                    if (votos2 == maiorNumeroDeVotos && quantidadeCandidatos >= 2) System.out.println("- " + candidatos[1]);
+                    if (votos3 == maiorNumeroDeVotos && quantidadeCandidatos >= 3) System.out.println("- " + candidatos[2]);
+                    if (votos4 == maiorNumeroDeVotos && quantidadeCandidatos >= 4) System.out.println("- " + candidatos[3]);
+                    if (votos5 == maiorNumeroDeVotos && quantidadeCandidatos >= 5) System.out.println("- " + candidatos[4]);
+                } else {
+                    System.out.println("\nVencedor:"); //mostra quem empatou ou quam venceu
+                    if (votos1 == maiorNumeroDeVotos) System.out.println(candidatos[0]);
+                    if (votos2 == maiorNumeroDeVotos && quantidadeCandidatos >= 2) System.out.println(candidatos[1]);
+                    if (votos3 == maiorNumeroDeVotos && quantidadeCandidatos >= 3) System.out.println(candidatos[2]);
+                    if (votos4 == maiorNumeroDeVotos && quantidadeCandidatos >= 4) System.out.println(candidatos[3]);
+                    if (votos5 == maiorNumeroDeVotos && quantidadeCandidatos >= 5) System.out.println(candidatos[4]);
+                }
+            }
+
+//------------------------------------------------------------------------------------------
+
+        }while (escolha != 5) ;
+        teclado.close();
     }
-
+}
