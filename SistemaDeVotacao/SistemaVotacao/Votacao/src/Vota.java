@@ -141,23 +141,23 @@ class Vota {
                 double percentual5 = (double) votos5 / totalVotos * 100;
 
                 System.out.println(candidatos[0] + " -> " + votos1 + " votos" + "\n" + "percentual de votos: ");
-                System.out.printf("%.2f%%%n", percentual1); // 70.00%
+                System.out.printf("%.2f%%%n", percentual1);
 
                 if (quantidadeCandidatos >= 2) {
                     System.out.println(candidatos[1] + " -> " + votos2 + " votos" + "\n" + "percentual de votos: ");
-                    System.out.printf("%.2f%%%n", percentual2); // 70.00%
+                    System.out.printf("%.2f%%%n", percentual2);
                 }
                 if (quantidadeCandidatos >= 3) {
                     System.out.println(candidatos[2] + " -> " + votos3 + " votos" + "\n" + "percentual de votos: ");
-                    System.out.printf("%.2f%%%n", percentual3); // 70.00%
+                    System.out.printf("%.2f%%%n", percentual3);
                 }
                 if (quantidadeCandidatos >= 4) {
                     System.out.println(candidatos[3] + " -> " + votos4 + " votos" + "\n" + "percentual de votos: ");
-                    System.out.printf("%.2f%%%n", percentual4); // 70.00%
+                    System.out.printf("%.2f%%%n", percentual4);
                 }
                 if (quantidadeCandidatos >= 5) {
                     System.out.println(candidatos[4] + " -> " + votos5 + " votos" + "\n" + "percentual de votos: ");
-                    System.out.printf("%.2f%%%n", percentual5); // 70.00%
+                    System.out.printf("%.2f%%%n", percentual5);
                 }
 
                 System.out.println("Total de votos: " + totalVotos);
@@ -179,23 +179,23 @@ class Vota {
                     System.out.println("================================");
                     System.out.println("RESULTADO DA VOTAÇÃO");
                     System.out.println(candidatos[0] + " -> " + votos1 + " votos" + "\n" + "percentual de votos: ");
-                    System.out.printf("%.2f%%%n", percentual1); // 70.00%
+                    System.out.printf("%.2f%%%n", percentual1);
 
                     if (quantidadeCandidatos >= 2) {
                         System.out.println(candidatos[1] + " -> " + votos2 + " votos" + "\n" + "percentual de votos: ");
-                        System.out.printf("%.2f%%%n", percentual2); // 70.00%
+                        System.out.printf("%.2f%%%n", percentual2);
                     }
                     if (quantidadeCandidatos >= 3) {
                         System.out.println(candidatos[2] + " -> " + votos3 + " votos" + "\n" + "percentual de votos: ");
-                        System.out.printf("%.2f%%%n", percentual3); // 70.00%
+                        System.out.printf("%.2f%%%n", percentual3);
                     }
                     if (quantidadeCandidatos >= 4) {
                         System.out.println(candidatos[3] + " -> " + votos4 + " votos" + "\n" + "percentual de votos: ");
-                        System.out.printf("%.2f%%%n", percentual4); // 70.00%
+                        System.out.printf("%.2f%%%n", percentual4);
                     }
                     if (quantidadeCandidatos >= 5) {
                         System.out.println(candidatos[4] + " -> " + votos5 + " votos" + "\n" + "percentual de votos: ");
-                        System.out.printf("%.2f%%%n", percentual5); // 70.00%
+                        System.out.printf("%.2f%%%n", percentual5);
                     }
                     System.out.println("\nTotal de votos: " + totalVotos);
                     System.out.println("\nEMPATE ENTRE:");
@@ -226,23 +226,22 @@ class Vota {
                 System.out.print("\n");
 
                 int quantidadeTurmas = 3;
-                int capacidadeTotal = quantidadeTurmas * votosDisponiveís; // 30
-
+                int capacidadeTotal = quantidadeTurmas * votosDisponiveís;
                 if (totalVotos > capacidadeTotal) {
                     System.out.println("Erro: total de votos (" + totalVotos + ") é maior que a capacidade das turmas (" + capacidadeTotal + ").");
                 } else {
 
-                    // array achatado com todas as posições possíveis
+
                     int[] votosFlat = new int[capacidadeTotal];
                     int pos = 0;
 
-                    // coloca os votos REAIS de cada candidato (nada de aleatório aqui ainda)
+
                     for (int i = 0; i < votos1; i++) votosFlat[pos++] = 1;
                     for (int i = 0; i < votos2; i++) votosFlat[pos++] = 2;
                     for (int i = 0; i < votos3; i++) votosFlat[pos++] = 3;
                     for (int i = 0; i < votos4; i++) votosFlat[pos++] = 4;
                     for (int i = 0; i < votos5; i++) votosFlat[pos++] = 5;
-                    // o restante do array já fica 0 automaticamente (não votou)
+
 
                     for (int i = capacidadeTotal - 1; i > 0; i--) {
                         int j = random.nextInt(i + 1);
@@ -251,7 +250,7 @@ class Vota {
                         votosFlat[j] = temp;
                     }
 
-                    // corta o array embaralhado em 3 pedaços de 10, um pra cada turma
+
                     int[][] matriz = new int[quantidadeTurmas][votosDisponiveís];
                     int idx = 0;
                     for (int t = 0; t < quantidadeTurmas; t++) {
@@ -261,7 +260,7 @@ class Vota {
                         }
                     }
 
-                    // imprime
+
                     for (int t = 0; t < quantidadeTurmas; t++) {
                         System.out.print("Turma " + (t + 1) + ": ");
                         for (int v = 0; v < votosDisponiveís; v++) {
@@ -271,8 +270,27 @@ class Vota {
                     }
 
 
+                    System.out.print("\n");
+                    System.out.println("================================");
+                    System.out.println("       ESTATISTICAS DE TURMA    ");
+                    System.out.println("================================");
+                    System.out.print("\n");
+
+                    for (int c = 1; c <= quantidadeCandidatos; c++) {
+
+                        System.out.println(candidatos[c - 1] + ":");
+
+                        for (int t = 0; t < quantidadeTurmas; t++) {
+                            int contagem = 0;
+                            for (int v = 0; v < votosDisponiveís; v++) {
+                                if (matriz[t][v] == c) contagem++;
+                            }
+                            System.out.println("  Recebeu " + contagem + " votos da turma " + (t + 1));
+                        }
+                        System.out.println();
+                    }
                 }
-            }
+                }
                 if (escolha == 5) {
                     System.out.println("Deseja mesmo sair? Digite 1 para voltar e 0 para sair.");
                     escolha = teclado.nextInt();
