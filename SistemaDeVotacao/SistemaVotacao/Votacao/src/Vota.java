@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 class Vota {
     public static void main(String[] args) {
@@ -45,13 +42,22 @@ class Vota {
 //------------------------------------------------------------------------------------------
 
             if (escolha == 1) {
+                try {
+            do {
 
-
-                System.out.println("Quantos candidatos deseja cadastrar?");
-                System.out.print("\n");
-                quantia = teclado.nextInt();
-                quantidadeCandidatos = quantia;
-                teclado.nextLine();
+                    System.out.println("Quantos candidatos deseja cadastrar?");
+                    System.out.print("\n");
+                    quantia = teclado.nextInt();
+                    quantidadeCandidatos = quantia;
+                    teclado.nextLine();
+                    if (quantia > 5) {
+                        System.out.println("Só são permitidos 5 candidatos.");
+                    }
+                } while (quantia > 5 || quantia == 0) ;
+            }catch(InputMismatchException e){
+                    System.out.println("Só números por favor.");
+                    break;
+                }
 
                 System.out.print("\n");
 
@@ -91,12 +97,19 @@ class Vota {
                     System.out.println((i + 1) + " - " + candidatos[i]);
 
                 }
-                System.out.print("\n");
-                System.out.println("Digite 0 para encerrar a votação e 1 para continuar: ");
-                System.out.print("\n");
-                escolha = teclado.nextInt();
-                System.out.print("\n");
+                try {
+
+                    System.out.print("\n");
+                    System.out.println("Digite 0 para encerrar a votação e 1 para continuar: ");
+                    System.out.print("\n");
+                    escolha = teclado.nextInt();
+                    System.out.print("\n");
+                } catch (InputMismatchException e) {
+                    System.out.print("Digite corretamente.");
+                   break;
+                }
                 if (escolha == 1) {
+                    try{
                     for (int i = 0; i < quantia; i++) {
                         System.out.println("Digite o número do candidato.");
                         voto = teclado.nextInt();
@@ -116,13 +129,22 @@ class Vota {
                         totalVotos = votos1 + votos2 + votos3 + votos4 + votos5;
                         System.out.println("Voto registrado com sucesso.");
                     }
+                    } catch (InputMismatchException e) {
+                        System.out.println("Digite o número do candidato da proxima vez.");
+                        break;
+                    }
                 }
+
             }
 
 
 //------------------------------------------------------------------------------------------
 
             if (escolha == 3) {
+                if(escolha == 3 && totalVotos == 0) {
+                    System.out.println("Faça as etapas anteriores por favor.");
+                    break;
+                }
                 int maiorNumeroDeVotos = votos1;
 
                 if (votos2 > maiorNumeroDeVotos) maiorNumeroDeVotos = votos2;
@@ -292,12 +314,17 @@ class Vota {
                 }
                 }
                 if (escolha == 5) {
-                    System.out.println("Deseja mesmo sair? Digite 1 para voltar e 0 para sair.");
-                    escolha = teclado.nextInt();
-                    if (escolha == 1) {
-                    }
-                    if (escolha == 0) {
-                        break;
+                    try {
+                        System.out.println("Deseja mesmo sair? Digite 1 para voltar e 0 para sair.");
+                        escolha = teclado.nextInt();
+                        if (escolha == 1) {
+                        }
+                        if (escolha == 0) {
+                            break;
+                        }
+                    } catch (InputMismatchException e) {
+                        System.out.println("Escreva direito por favor:");
+                        escolha = teclado.nextInt();
                     }
                 }
 
